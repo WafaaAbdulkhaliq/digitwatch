@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title> DigitalWatch </title>
+    <style>
+       *{
+
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            background:#333;
+        }
+        .main{
+            background:#ccc;
+            text-align:center;
+            width:400px;
+            height:100px;
+            margin:30px auto;
+            padding:20px;
+               
+        }
+         form{
+
+            padding:0px;
+            margin-bottom:5px;
+
+        }
+        .textview{
+
+            width:100%;
+            height:60px;
+            padding:0 10px ;
+            pointer-events:none;
+            font-size:32px;
+
+        }
+       
+    </style>
+</head>
+<body>
+    <div class=" main">
+        <form name="form">
+            <input type="text" name="textview" class="textview" id="time" readonly />
+            
+            
+        </form>
+
+
+     </div>
+   
+    <script>
+
+        var currentTime;
+        setInterval(function () {
+            var d = new Date();
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            currentTime = formatZero(d.getHours()) + " : " + formatZero(d.getMinutes()) + " : " + formatZero(d.getSeconds()) + " : " + formatZero(days[d.getDay()]) + "\n"
+            document.getElementById("time").value = currentTime;
+
+        }
+        , 1000)
+
+
+        function formatZero(num) {
+            return String(num).padStart(2, '0')
+        }
+
+        var savedTime = [];
+    </script>
+</body>
+</html>
